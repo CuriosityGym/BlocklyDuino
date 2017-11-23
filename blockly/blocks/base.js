@@ -115,6 +115,7 @@ Blockly.Blocks['inout_digital_write'] = {
       ],
       "inputsInline": true,
       "previousStatement": null,
+	  "nextStatement": null,
       "colour":  Blockly.Blocks.math.HUE,
       "tooltip": "Write digital value to a specific Pin",
       
