@@ -39,6 +39,14 @@
 
 	<script type="text/javascript" src="../../generators/CuriosityGym/UtilBlocks.js"></script>
 	<script type="text/javascript" src="../../generators/CuriosityGym/UtilBlocksGenerator.js"></script>	
+	
+	<script type="text/javascript" src="../../generators/CuriosityGym/wifiBlocks.js"></script>
+	<script type="text/javascript" src="../../generators/CuriosityGym/wifiBlocksGenerator.js"></script>	
+	
+	<script type="text/javascript" src="../../generators/CuriosityGym/IoTServicesBlocks.js"></script>
+	<script type="text/javascript" src="../../generators/CuriosityGym/IoTServicesGenerator.js"></script>	
+	
+	
    <!-- CuriosityGym Specific Includes -->
    
   <script type="text/javascript" src="../../msg/js/en.js"></script>
@@ -443,6 +451,9 @@ function init() {
           </block>
 		</value>  
 	  </block>
+	  
+	  
+	  
       <block type="inout_digital_read"></block>
       <block type="inout_analog_write">
         <value name="NUM">
@@ -573,7 +584,26 @@ function init() {
       </block>
     </category>
     
-    
+    <sep></sep>
+	
+	<category name="Wifi">	 
+	  <block type="InitDeviceParams"></block>
+	  <block type="ConnectToWifi"></block> 
+	</category>
+	
+	<category name="Blynk">	  
+	  	 <block type="BlynkAUTH"></block>
+		 <block type="BlynkConnect"></block>
+		 <block type="BlynkRun"></block>
+		 <block type="BlynkConnected"></block>		 
+	</category>
+	<category name="IFTTT">	  
+	  	 
+	</category>
+	<category name="Thingspeak">	  
+	   
+	</category>
+	
     
 	
   </xml>
