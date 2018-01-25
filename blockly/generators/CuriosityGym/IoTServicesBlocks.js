@@ -26,7 +26,15 @@
 goog.provide('Blockly.Arduino.CGRobot');
 
 goog.require('Blockly.Arduino');
-
+var customProfile = {  
+  ESP8266: {
+    description: "Generic ESP8266 Module",
+    digital: [["D0", "D0"],["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"], ["D5", "D5"], ["D6", "D6"], ["D7", "D7"], ["D8", "D8"]],
+	analog: [["A0", "A0"]],
+	virtual:[["V0", "V0"],["V1", "V1"], ["V2", "V2"], ["V3", "V3"], ["V4", "V4"], ["V5", "V5"], ["V6", "V6"], ["V7", "V7"], ["V8", "V8"]],
+    serial: 115200
+  }
+};
 
 
 //Added by Rupin 
@@ -77,6 +85,31 @@ Blockly.Blocks["BlynkConnected"]={
 			.appendField("Is Blynk Connected?")	
 			//.appendField(new Blockly.FieldDropdown(sensorCount), 'sensorNumber');			
 		this.setOutput(true, 'Boolean');
+		this.setColour(120);
+		
+	}
+};
+
+Blockly.Blocks["RGBLED"]={
+	init:function()
+	{
+		
+		this.appendDummyInput()
+			.appendField("Show Color on LED");
+		this.appendDummyInput()
+			.setAlign(Blockly.ALIGN_RIGHT)
+			.appendField("Digital Pin:")
+			.appendField(new Blockly.FieldDropdown(customProfile["ESP8266"].digital),"d_pin");	
+		this.appendDummyInput()
+			.setAlign(Blockly.ALIGN_RIGHT)
+			.appendField("Virtual Pin:")
+			.appendField(new Blockly.FieldDropdown(customProfile["ESP8266"].virtual),"v_pin");
+			
+			
+	//this.setPreviousStatement(true);
+	//this.setNextStatement(true);			
+			//.appendField(new Blockly.FieldDropdown(sensorCount), 'sensorNumber');			
+		//this.setOutput(true, 'Boolean');
 		this.setColour(120);
 		
 	}
