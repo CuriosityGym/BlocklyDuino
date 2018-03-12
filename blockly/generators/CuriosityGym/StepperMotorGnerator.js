@@ -29,16 +29,22 @@ goog.require('Blockly.Arduino');
 
 
 Blockly.Arduino.stepperMotor = function()
-{	Blockly.Arduino.definitions_['include_stepper'] = '#include <AccelStepper.h>';
-	Blockly.Arduino.definitions_['include_motor'] = '#include <AFMotor.h>';
-	var stepinputSpeed= Blockly.Arduino.valueToCode(this, 'stepmotorSpeed', Blockly.Arduino.ORDER_ATOMIC)||255;
+{	var stepinputSpeed= Blockly.Arduino.valueToCode(this, 'stepmotorSpeed', Blockly.Arduino.ORDER_ATOMIC)||255;
 	var stepchosenMotor= this.getFieldValue('stepmotorChoice')
 	var stepchosenDirection= this.getFieldValue('stepdirection')
-	var stepcode="stepper"+stepchosenMotor+".runSpeed();\n"
+	Blockly.Arduino.definitions_['include_stepper'] = '#include <AccelStepper.h>';
+	Blockly.Arduino.definitions_['include_motor'] = '#include <AFMotor.h>';
 	Blockly.Arduino.definitions_['AFmotorobject' + stepchosenMotor] = "AF_Stepper motor"+stepchosenMotor+"(4096,"+stepchosenMotor+" );\n";
-	Blockly.Arduino.setups_['stepspeed' + stepchosenMotor]="stepper"+stepchosenMotor+".setSpeed("+stepinputSpeed+");"
 	Blockly.Arduino.definitions_['Forward' + stepchosenMotor] = "void FORWARD"+stepchosenMotor+"() { \n motor"+stepchosenMotor+".onestep(FORWARD, SINGLE);\n }\n";
 	Blockly.Arduino.definitions_['Backward' + stepchosenMotor] = "void BACKWARD"+stepchosenMotor+"() { \n motor"+stepchosenMotor+".onestep(BACKWARD, SINGLE);\n }\n";
-	Blockly.Arduino.definitions_['Accelstepper' + stepchosenMotor + stepchosenDirection] = "AccelStepper stepper"+stepchosenMotor+"("+stepchosenDirection+""+stepchosenMotor+","+stepchosenDirection+""+stepchosenMotor+");";
+	if(stepchosenDirection == 'FORWARD'){
+	Blockly.Arduino.definitions_['Accelstepper' + stepchosenMotor + stepchosenDirection] = "AccelStepper stepper"+stepchosenMotor+"(FORWARD"+stepchosenMotor+",BACKWARD"+stepchosenMotor+");\n";
+	}
+	else{
+	Blockly.Arduino.definitions_['Accelstepper' + stepchosenMotor + stepchosenDirection] = "AccelStepper stepper"+stepchosenMotor+"(BACKWARD"+stepchosenMotor+",FORWARD"+stepchosenMotor+");\n";
+	}
+	Blockly.Arduino.setups_['stepspeed' + stepchosenMotor]="stepper"+stepchosenMotor+".setSpeed("+stepinputSpeed+");"
+	var stepcode="stepper"+stepchosenMotor+".runSpeed();\n"
 	return stepcode;
 }
+

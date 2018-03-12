@@ -37,6 +37,7 @@ Blockly.Blocks['stepperMotor'] = {
         .setCheck('Number')
         .appendField('Turn Stepper Motor ')
 		.appendField(new Blockly.FieldDropdown(Stepmotoroptions), 'stepmotorChoice')
+		.appendField('continuously')
 		.appendField('in ')
 		.appendField(new Blockly.FieldDropdown(StepdirectionOptions), 'stepdirection')
 		.appendField('direction with speed ');
