@@ -35,13 +35,37 @@ Blockly.Blocks['stepperMotor'] = {
 	  
 	this.appendValueInput('stepmotorSpeed')
         .setCheck('Number')
-        .appendField('Turn Stepper Motor ')
+        .appendField('Turn Motor ')
 		.appendField(new Blockly.FieldDropdown(Stepmotoroptions), 'stepmotorChoice')
-		.appendField('continuously')
-		.appendField('in ')
+		.appendField('continuously in')
 		.appendField(new Blockly.FieldDropdown(StepdirectionOptions), 'stepdirection')
 		.appendField('direction with speed ');
 		
+	this.setPreviousStatement(true);
+	this.setNextStatement(true);
+    this.setColour(100);
+
+  }
+}
+
+Blockly.Blocks['MoveMotor'] = {
+  init: function() {
+	  var Movemotoroptions = [['1', '1'], ['2', '2']];
+	  var MovedirectionOptions = [['FORWARD', 'FORWARD'], ['BACKWARD', 'BACKWARD']];
+	  
+	this.appendValueInput('movemotorSpeed')
+        .setCheck('Number')
+        .appendField('Move Motor')
+		.appendField(new Blockly.FieldDropdown(Movemotoroptions), 'movemotorChoice')
+		.appendField('in')
+		.appendField(new Blockly.FieldDropdown(MovedirectionOptions), 'movemotordirection')
+		.appendField('direction with speed ');	
+	this.appendValueInput("Steps", 'Number')
+        .appendField("in")
+        .setCheck('Number');
+	this.appendDummyInput()
+	    .appendField("steps");
+	this.setInputsInline(true);
 	this.setPreviousStatement(true);
 	this.setNextStatement(true);
     this.setColour(100);

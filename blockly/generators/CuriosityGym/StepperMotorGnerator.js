@@ -48,3 +48,26 @@ Blockly.Arduino.stepperMotor = function()
 	return stepcode;
 }
 
+Blockly.Arduino.MoveMotor = function()
+{	var moveinputSpeed= Blockly.Arduino.valueToCode(this, 'movemotorSpeed', Blockly.Arduino.ORDER_ATOMIC)||255;
+	var moveinputSteps= Blockly.Arduino.valueToCode(this, 'Steps', Blockly.Arduino.ORDER_ATOMIC)||1024;
+	var movechosenMotor= this.getFieldValue('movemotorChoice')
+	var movechosenDirection= this.getFieldValue('movemotordirection')
+	Blockly.Arduino.definitions_['include_stepper'] = '#include <AccelStepper.h>';
+	Blockly.Arduino.definitions_['include_motor'] = '#include <AFMotor.h>';
+	Blockly.Arduino.definitions_['AFmotorobject' + movechosenMotor] = "AF_Stepper motor"+movechosenMotor+"(4096,"+movechosenMotor+" );\n";
+	Blockly.Arduino.definitions_['Forward' + movechosenMotor] = "void FORWARD"+movechosenMotor+"() { \n motor"+movechosenMotor+".onestep(FORWARD, SINGLE);\n }\n";
+	Blockly.Arduino.definitions_['Backward' + movechosenMotor] = "void BACKWARD"+movechosenMotor+"() { \n motor"+movechosenMotor+".onestep(BACKWARD, SINGLE);\n }\n";
+	if(movechosenDirection == 'FORWARD'){
+	Blockly.Arduino.definitions_['Accelstepper' + movechosenMotor + movechosenDirection] = "AccelStepper stepper"+movechosenMotor+"(FORWARD"+movechosenMotor+",BACKWARD"+movechosenMotor+");\n";
+	}
+	else{
+	Blockly.Arduino.definitions_['Accelstepper' + movechosenMotor + movechosenDirection] = "AccelStepper stepper"+movechosenMotor+"(BACKWARD"+movechosenMotor+",FORWARD"+movechosenMotor+");\n";
+	}
+	Blockly.Arduino.setups_['stepspeed' + movechosenMotor]="stepper"+movechosenMotor+".setMaxSpeed("+moveinputSpeed+");"
+	Blockly.Arduino.setups_['stepacceleration' + movechosenMotor]="stepper"+movechosenMotor+".setAcceleration("+moveinputSpeed+");"
+	Blockly.Arduino.setups_['stepmoveto' + movechosenMotor]="stepper"+movechosenMotor+".moveTo("+moveinputSteps+");\n"
+	var stepcode="stepper"+movechosenMotor+".run();\n"
+	return stepcode;
+}
+
