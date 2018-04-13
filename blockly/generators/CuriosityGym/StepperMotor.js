@@ -61,7 +61,7 @@ Blockly.Blocks['MoveMotor'] = {
 		.appendField(new Blockly.FieldDropdown(MovedirectionOptions), 'movemotordirection')
 		.appendField('direction with speed ');	
 	this.appendValueInput("Steps", 'Number')
-        .appendField("in")
+        .appendField("up to")
         .setCheck('Number');
 	this.appendDummyInput()
 	    .appendField("steps");
