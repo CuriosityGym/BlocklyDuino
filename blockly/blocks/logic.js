@@ -462,3 +462,13 @@ Blockly.Blocks['logic_ternary'] = {
     this.prevParentConnection_ = parentConnection;
   }
 };
+
+Blockly.Blocks['Absolute'] = {
+  init: function() {	  
+	this.appendValueInput('absValue')
+		.appendField("abs");
+	this.setOutput(true);
+    this.setColour(Blockly.Blocks.logic.HUE);
+
+  }
+};

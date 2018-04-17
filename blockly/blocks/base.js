@@ -85,9 +85,6 @@ Blockly.Blocks['base_constrain'] = {
 	this.appendValueInput("HRange", 'Number')
         .appendField("Higher Value ")
         .setCheck('Number');		
-	
-   // this.appendDummyInput()
-	 //     .appendField("]");
     this.setInputsInline(false);
     this.setOutput(true);
     this.setTooltip('Constrains a number to a particlar range.');
