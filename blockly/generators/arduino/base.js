@@ -44,6 +44,14 @@ Blockly.Arduino.base_map = function() {
   return [code, Blockly.Arduino.ORDER_NONE];
 };
 
+Blockly.Arduino.base_constrain = function() {
+  var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_NONE) ||0;
+  var value_LRange = Blockly.Arduino.valueToCode(this, 'LRange', Blockly.Arduino.ORDER_NONE) ||0;
+  var value_HRange = Blockly.Arduino.valueToCode(this, 'HRange', Blockly.Arduino.ORDER_ATOMIC)||1024;
+  var code = 'constrain(' + value_num + ', '+value_LRange+', '+value_HRange+')';
+  return [code, Blockly.Arduino.ORDER_NONE];
+};
+
 Blockly.Arduino.inout_buildin_led = function() {
   var dropdown_stat = this.getFieldValue('STAT');
   Blockly.Arduino.setups_['setup_output_13'] = 'pinMode(13, OUTPUT);';

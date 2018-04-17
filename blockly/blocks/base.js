@@ -73,6 +73,27 @@ Blockly.Blocks['base_map'] = {
   }
 };
 
+Blockly.Blocks['base_constrain'] = {
+  init: function() {
+    this.setColour(230);
+    this.appendValueInput("NUM", 'Number')
+        .appendField("Constrain Variable ")
+        .setCheck('Number');
+	this.appendValueInput("LRange", 'Number')
+        .appendField("Lower Value ")
+        .setCheck('Number');
+	this.appendValueInput("HRange", 'Number')
+        .appendField("Higher Value ")
+        .setCheck('Number');		
+	
+   // this.appendDummyInput()
+	 //     .appendField("]");
+    this.setInputsInline(false);
+    this.setOutput(true);
+    this.setTooltip('Constrains a number to a particlar range.');
+  }
+};
+
 Blockly.Blocks['inout_buildin_led'] = {
    helpUrl: 'http://arduino.cc/en/Reference/DigitalWrite',
    init: function() {
