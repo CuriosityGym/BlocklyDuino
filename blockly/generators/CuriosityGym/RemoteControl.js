@@ -34,11 +34,10 @@ Blockly.Blocks['inputChannel'] = {
   init: function() {
     this.setColour(230);
     this.appendDummyInput()
-	      .appendField("Read Channel")
+	      .appendField("Read")
+		  .appendField(new Blockly.FieldDropdown([['HIGH', 'HIGH'], ['LOW', 'LOW']]), 'state')
+		  .appendField("pulse value from pin")
 	      .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
-		  .appendField('in')
-		.appendField(new Blockly.FieldDropdown([['HIGH', 'HIGH'], ['LOW', 'LOW']]), 'state')
-		.appendField('state');
     this.setOutput(true, 'Boolean');
     this.setTooltip('');
   }

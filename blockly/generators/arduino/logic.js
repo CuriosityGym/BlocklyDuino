@@ -99,9 +99,3 @@ Blockly.Arduino.logic_null = function() {
   return [code ,Blockly.Arduino.ORDER_ATOMIC];
 };
 
-Blockly.Arduino["Absolute"]=function()
-{
-	var ABS_VALUE=Blockly.Arduino.valueToCode(this, 'absValue', Blockly.Arduino.ORDER_ATOMIC);
-	var code = 'abs('+ABS_VALUE+')';
-	return [code ,Blockly.Arduino.ORDER_ATOMIC];       
-};

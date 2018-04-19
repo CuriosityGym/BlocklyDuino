@@ -480,3 +480,13 @@ Blockly.Blocks['math_random_float'] = {
     this.setTooltip(Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP);
   }
 };
+
+Blockly.Blocks['Absolute'] = {
+  init: function() {	  
+	this.appendValueInput('absValue')
+		.appendField("abs");
+	this.setOutput(true);
+    this.setColour(Blockly.Blocks.math.HUE);
+
+  }
+};

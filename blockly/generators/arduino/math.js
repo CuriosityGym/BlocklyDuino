@@ -63,3 +63,10 @@ Blockly.Arduino.math_arithmetic.OPERATORS = {
   MODULO: [' % ', Blockly.Arduino.ORDER_MULTIPLICATIVE],
   POWER: [null, Blockly.Arduino.ORDER_NONE]  // Handle power separately.
 };
+
+Blockly.Arduino["Absolute"]=function()
+{
+	var ABS_VALUE=Blockly.Arduino.valueToCode(this, 'absValue', Blockly.Arduino.ORDER_ATOMIC);
+	var code = 'abs('+ABS_VALUE+')';
+	return [code ,Blockly.Arduino.ORDER_ATOMIC];       
+};
