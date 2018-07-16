@@ -105,7 +105,7 @@ Blockly.Blocks['motor1_Direction'] = {
 Blockly.Blocks['setMotor'] = {
   init: function() {
 	  var motoroptions = [['1', '1'], ['2', '2'],['3', '3'],['4', '4']];
-	  var directionOptions = [['FORWARD', 'FORWARD'], ['BACKWARD', 'BACKWARD']];
+	  var directionOptions = [['FORWARD', 'FORWARD'], ['BACKWARD', 'BACKWARD'],['BRAKE', 'BRAKE']];
 	  
 	this.appendValueInput('motorSpeed')
         .setCheck('Number')
